@@ -1,24 +1,30 @@
 package mainPack;
 
+import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import callable.GetValueCallable;
-import callable.MyExecutorService;
-import callable.UpdateAfficheurCallable;
 import observer.Observer;
 import observer.ObserveurDeCanal;
 import observer.Subject;
+import callable.GetValueCallable;
+import callable.MyExecutorService;
+import callable.UpdateAfficheurCallable;
 
-public class CanalImpl implements Canal{
+public class CanalImpl implements Canal {
 
 	private Capteur _capteur;
 	private ObserveurDeCanal _afficheur;
 
-	public CanalImpl(Capteur capteur){
-		_capteur=capteur;
+	private int Min = 1;
+	private int Max = 10;
+	private int innerDlay = Min + (int) (Math.random() * ((Max - Min) + 1));
+
+	public CanalImpl(Capteur capteur) {
+		_capteur = capteur;
 	}
-	
+
 	public Capteur getCapteur() {
 		return _capteur;
 	}
@@ -27,46 +33,48 @@ public class CanalImpl implements Canal{
 		this._capteur = capteur;
 	}
 
-	public  ObserveurDeCanal getAfficheur() {
+	public ObserveurDeCanal getAfficheur() {
 		return _afficheur;
 	}
 
-	public void setAfficheur( ObserveurDeCanal afficheur) {
+	public void setAfficheur(ObserveurDeCanal afficheur) {
 		this._afficheur = afficheur;
 	}
-   
-    //TODO pas besoin de capteur car il est comme variable interne
+
+	// TODO pas besoin de capteur car il est comme variable interne
 	public void update(Capteur subject) {
-	
-	   	 System.out.println("update canal Impl called : create a callable.");
-	   	 UpdateAfficheurCallable  cUpdateAff=new UpdateAfficheurCallable(this,(Afficheur)_afficheur);
-	   	 MyExecutorService.submit(cUpdateAff);
-	   	 //_afficheur.update((Canal)this);
+
+		System.out.println("update canal Impl called : create a callable."
+				+ innerDlay);
+		UpdateAfficheurCallable cUpdateAff = new UpdateAfficheurCallable(this,
+				(Afficheur) _afficheur);
+		MyExecutorService.submit(cUpdateAff, innerDlay * 100);
+		// _afficheur.update((Canal)this);
 	}
 
-
 	public int getValue() {
-	
-		System.out.println("canaImpl : get value called , create a callable");
-		GetValueCallable  cGetVal= new GetValueCallable(_capteur);
-	   	Future<Integer> f= MyExecutorService.submit(cGetVal);
-	try {
-			return  f.get();
+
+		System.out
+				.println("canaImpl : get value called , create a callable delay :"
+						+ innerDlay);
+		GetValueCallable cGetVal = new GetValueCallable(_capteur);
+		Future<Integer> f = MyExecutorService.submit(cGetVal, innerDlay * 100);
+		try {
+			return f.get();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
-	    return 0;
+		return 0;
 	}
 
 	public void attach(Observer<Subject> o) {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
 	}
 
 	public void detach(Observer<Subject> o) {
 		// TODO Auto-generated method stub
 	}
-	
 
 }

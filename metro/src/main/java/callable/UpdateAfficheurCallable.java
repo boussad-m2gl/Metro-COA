@@ -17,9 +17,6 @@ public class UpdateAfficheurCallable implements Callable{
 	}
 	
 	public Object call() throws Exception {
-		
-		// -- wait(for a certain periode)
-		//wait(5);
 		observer.update(subject);
 		return null;
 	}
