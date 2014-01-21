@@ -79,16 +79,18 @@ public class IHM extends JFrame {
 
 		JRadioButton jrdbAtomiqueDiff = new JRadioButton("Atomique diffusion");
 		algoPanel.add(jrdbAtomiqueDiff);
-		jrdbAtomiqueDiff.setSelected(true);
+		//jrdbAtomiqueDiff.setSelected(true);
 		
 		
 
 		jrdbAtomiqueDiff.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-
+				System.out.println(" Atomic clicked ");
+				stopcmd.executer(); 
 				atomiquecmd = new algoAtomiqueCMD(c);
 				atomiquecmd.executer();
+				startcmd.executer();
 			}
 
 		});
@@ -99,8 +101,12 @@ public class IHM extends JFrame {
 		jrdbSeqDiff.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-
-				// algoSequentielCMD.executer();
+				System.out.println(" Diff clicked ");
+				stopcmd.executer(); 
+				seqcmd = new algoSequentielCMD(c);
+				seqcmd.executer();
+				//launch ... 
+				startcmd.executer();
 			}
 
 		});
@@ -112,7 +118,12 @@ public class IHM extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 
-				// algoEpoqueCMD.executer();
+				System.out.println(" Epoque clicked ");
+				stopcmd.executer(); 
+				epoquecmd = new algoEpoqueCMD(c);
+				seqcmd.executer();
+				//launch ... 
+				startcmd.executer();
 			}
 
 		});
@@ -181,8 +192,8 @@ public class IHM extends JFrame {
 		startcmd = new StartCMD(c);
 		stopcmd = new StopCMD(c);
 		
-		atomiquecmd = new algoAtomiqueCMD(c);
-		atomiquecmd.executer();
+		//atomiquecmd = new algoAtomiqueCMD(c);
+		//atomiquecmd.executer();
 		
 	}
 

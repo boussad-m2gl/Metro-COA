@@ -18,10 +18,13 @@ public class DiffusionAtomiqAlgo implements AlgoDiffusion {
 	}
 
 	public void executeTick() {
-		if (_updatePossible) {
+		
+		if (_updatePossible == true) {
+			
 			_updatePossible = false;
-			_capteur.setValue(_capteur.getValue() + 1);
+			_capteur.setValue(_capteur.algo2CapteurGetValue() + 1);
 			_capteur.notifyObservers(); // update vers les canneaux
+		
 		} else {
 			// Simply ignore this tick
 			System.out.println("******* click ignored ***** ");
@@ -30,10 +33,12 @@ public class DiffusionAtomiqAlgo implements AlgoDiffusion {
 
 	public int executeGetValue() {
 		_nbUpdatesReq++;
+		
 		if (_nbUpdatesReq == _nbObservers) {
 			_updatePossible = true;
 			_nbUpdatesReq = 0;
 		}
+		
 		return _capteur.algo2CapteurGetValue();
 	}
 }

@@ -44,21 +44,21 @@ public class CanalImpl implements Canal {
 	// TODO pas besoin de capteur car il est comme variable interne
 	public void update(Capteur subject) {
 
-		System.out.println("update canal Impl called : create a callable."
-				+ innerDlay);
+	/*	System.out.println("update canal Impl called : create a callable."
+				+ innerDlay);*/
 		UpdateAfficheurCallable cUpdateAff = new UpdateAfficheurCallable(this,
 				(Afficheur) _afficheur);
-		MyExecutorService.submit(cUpdateAff, innerDlay * 100);
-		// _afficheur.update((Canal)this);
+		MyExecutorService.submit(cUpdateAff, innerDlay * 100); //innerDlay * 100
+		 
+	//	   System.out.println("   Canal notify Afficheur ... ");
+	//	 _afficheur.update((Canal)this);
 	}
 
 	public int getValue() {
 
-		System.out
-				.println("canaImpl : get value called , create a callable delay :"
-						+ innerDlay);
+		
 		GetValueCallable cGetVal = new GetValueCallable(_capteur);
-		Future<Integer> f = MyExecutorService.submit(cGetVal, innerDlay * 100);
+		Future<Integer> f = MyExecutorService.submit(cGetVal, innerDlay * 100); //  innerDlay * 100
 		try {
 			return f.get();
 		} catch (InterruptedException e) {
@@ -67,6 +67,8 @@ public class CanalImpl implements Canal {
 			e.printStackTrace();
 		}
 		return 0;
+		//System.out.println("   Canal makes get value  ... ");
+		//return _capteur.getValue();
 	}
 
 	public void attach(Observer<Subject> o) {
@@ -75,6 +77,15 @@ public class CanalImpl implements Canal {
 
 	public void detach(Observer<Subject> o) {
 		// TODO Auto-generated method stub
+	}
+
+	//  Normaly this will be used in the epoq diffusion strategy
+	public void update(EpoqMessage msg) {
+		//  call update to affiheur 
+		
+		//TODO : Create a callable epocallable.. and schedulerExecutorservice , but first test with that
+		// synchronized version
+		_afficheur.update(msg);
 	}
 
 }

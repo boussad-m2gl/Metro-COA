@@ -6,7 +6,7 @@ import mainPack.Capteur;
 
 public class algoAtomiqueCMD implements command {
 
-	 private Capteur _c;
+	private Capteur _c;
 	
 	public algoAtomiqueCMD (Capteur c){
 		 _c=c;

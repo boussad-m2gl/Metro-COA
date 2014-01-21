@@ -15,4 +15,8 @@ public interface Capteur extends Subject {
 	public AlgoDiffusion getAlgoDiffusion(); 
 	public void setAlgoDiffusion(AlgoDiffusion algoDiffusion); 
 	public int algo2CapteurGetValue();
+	public int get_versionEpoq();
+
+	public void set_versionEpoq(int _versionEpoq);
+	public void notifyObservers(EpoqMessage msg);
 }

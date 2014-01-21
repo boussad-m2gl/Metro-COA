@@ -12,5 +12,6 @@ public interface Canal  extends Subject,OberserverDeCapteur {
 	public ObserveurDeCanal getAfficheur();
 	public void update(Capteur subject);
     public int getValue();
+   // public void update(EpoqMessage msg);
 
 }

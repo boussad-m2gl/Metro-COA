@@ -16,6 +16,16 @@ public class CapteurImpl implements Capteur {
 	private Horloge horloge;
 	private int capteurvalue = 0; // la valeur du capteur
 
+	private int _versionEpoq=0;
+	
+	public int get_versionEpoq() {
+		return _versionEpoq;
+	}
+
+	public void set_versionEpoq(int _versionEpoq) {
+		this._versionEpoq = _versionEpoq;
+	}
+
 	CapteurImpl() {
 
 		liObs = new ArrayList<OberserverDeCapteur>();
@@ -30,12 +40,16 @@ public class CapteurImpl implements Capteur {
 	}
 
 	public void setAlgoDiffusion(AlgoDiffusion algoDiffusion) {
+		capteurvalue = 0;  // reset of capteur value 
 		this.algoDiffusion = algoDiffusion;
 		this.algoDiffusion.configure(this, liObs.size());
+		
 	}
 
 	public int getValue() {
-		return algoDiffusion.executeGetValue();
+		
+	    return algoDiffusion.executeGetValue();
+		
 	}
 
 	public int algo2CapteurGetValue() {
@@ -47,11 +61,19 @@ public class CapteurImpl implements Capteur {
 	}
 
 	public void notifyObservers() {
+	
+		
 		for (OberserverDeCapteur c : liObs) {
-			c.update(null);
+			c.update(this);
 		}
 	}
 
+	public void notifyObservers(EpoqMessage msg){
+		
+		for (OberserverDeCapteur c : liObs) {
+			c.update(msg);
+		}
+	}
 	public void setValue(int v) {
 		capteurvalue = v;
 	}
