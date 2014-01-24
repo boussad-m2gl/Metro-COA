@@ -1,25 +1,28 @@
 package util;
 
-
 import java.util.Timer;
 import java.util.TimerTask;
 
 import command.command;
 
 /**
- * Horloge : qui est le composant qui genere des signaux 
- * On programme des taches qui seront exécutés 
+ * Horloge : qui est le composant qui genere des signaux On programme des taches
+ * qui seront exécutés
  * 
  * */
-public class Horloge  {
+public class Horloge {
 
 	private command clickC;
 	private Timer timer; // timer pour la commande marquer temps
-    private long periodActiveCmd=200; // ms
+	private long periodActiveCmd = 200; // ms
+
 	// private Timer timer2 = new Timer(); // timer pour commander led1 et led2
 
+	/**
+	 * contructeur
+	 */
 	public Horloge() {
-		
+
 		timer = new Timer();
 	}
 
@@ -46,7 +49,12 @@ public class Horloge  {
 
 	/**
 	 * Permet d'activer periodiquement une command apres delais en MiliSecond
-	 * */
+	 * 
+	 * @param cmdClick
+	 *            commande de click
+	 * @param periodEnMSecondes
+	 *            period en mscondes
+	 */
 	public void activerPeriodiquement(command cmdClick, float periodEnMSecondes) {
 
 		clickC = cmdClick;
@@ -55,30 +63,13 @@ public class Horloge  {
 	}
 
 	/**
-	 * Permet d'activer une commande aprés un delais
-	 * */
-	/*public void activerApresDelais(Command cmd, float delaisEnSecond) {
-
-		final Command cmtToExecute = cmd;
-
-		timer.schedule(new TimerTask() {
-
-			@Override
-			public void run() {
-				cmtToExecute.executer();
-			}
-		}, (long) delaisEnSecond);
-
-	}*/
-
-	/**
 	 * Mise a jour de l'etat interne de l'horloge vis a vis de son controleur
 	 * 
 	 * */
 	public void update() {
 		stopChrono();
-		//periodActiveCmd = (long) ((new Double(1000)) / (new Double(
-		//		controleur.getTempo()) / 60));
+		// periodActiveCmd = (long) ((new Double(1000)) / (new Double(
+		// controleur.getTempo()) / 60));
 		startChrono();
 	}
 

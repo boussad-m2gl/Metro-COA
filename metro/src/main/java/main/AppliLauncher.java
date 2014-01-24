@@ -4,10 +4,20 @@ import util.Capteur;
 import util.CapteurImpl;
 import util.IHM;
 
+/***
+ * 
+ * Enter point of program
+ * 
+ * @author Boussad , PU
+ *
+ */
 public class AppliLauncher {
 
 	/**
-	 * @param args
+	 * 
+	 * enter point
+	 * 
+	 * @param args 
 	 */
 	public static void main(String[] args) {
 

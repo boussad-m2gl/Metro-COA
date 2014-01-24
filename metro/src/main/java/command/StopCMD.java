@@ -2,13 +2,27 @@ package command;
 
 import util.Capteur;
 
-public class StopCMD  implements command {
+/**
+ * 
+ * Command de Stop
+ * 
+ * Arreter le fonctionement du capteur
+ * 
+ */
+public class StopCMD implements command {
 
-	Capteur _cpt; 
-	
-	public StopCMD(Capteur cpt){
-		 _cpt=cpt;
-	} 
+	Capteur _cpt;
+
+	/**
+	 * construteur
+	 * 
+	 * @param cpt
+	 *            capteur
+	 */
+	public StopCMD(Capteur cpt) {
+		_cpt = cpt;
+	}
+
 	public void executer() {
 		_cpt.stop();
 	}

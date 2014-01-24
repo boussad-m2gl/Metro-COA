@@ -9,6 +9,11 @@ import algorithmes.AlgoDiffusion;
 
 import command.ClickCMD;
 
+/**
+ * 
+ * implement de capteur
+ * 
+ */
 public class CapteurImpl implements Capteur {
 
 	private AlgoDiffusion algoDiffusion;
@@ -26,6 +31,9 @@ public class CapteurImpl implements Capteur {
 		this._versionEpoq = _versionEpoq;
 	}
 
+	/**
+	 * contruteur
+	 */
 	public CapteurImpl() {
 
 		liObs = new ArrayList<OberserverDeCapteur>();

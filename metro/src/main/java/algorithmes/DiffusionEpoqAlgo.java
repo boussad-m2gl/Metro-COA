@@ -3,7 +3,6 @@ package algorithmes;
 import util.Capteur;
 import util.EpoqMessage;
 
-//TODO
 public class DiffusionEpoqAlgo implements AlgoDiffusion {
 
 	private Capteur _capteur;

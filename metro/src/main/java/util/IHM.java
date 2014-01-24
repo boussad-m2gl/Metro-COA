@@ -43,6 +43,9 @@ public class IHM extends JFrame {
 	algoSequentielCMD seqcmd = null;
 	algoEpoqueCMD epoquecmd = null;
 
+	/**
+	 * construteur
+	 */
 	public IHM() {
 
 		getContentPane().setLayout(new BorderLayout());
@@ -79,15 +82,13 @@ public class IHM extends JFrame {
 
 		JRadioButton jrdbAtomiqueDiff = new JRadioButton("Atomique diffusion");
 		algoPanel.add(jrdbAtomiqueDiff);
-		//jrdbAtomiqueDiff.setSelected(true);
-		
-		
+		// jrdbAtomiqueDiff.setSelected(true);
 
 		jrdbAtomiqueDiff.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(" Atomic clicked ");
-				stopcmd.executer(); 
+				stopcmd.executer();
 				atomiquecmd = new algoAtomiqueCMD(c);
 				atomiquecmd.executer();
 				startcmd.executer();
@@ -102,10 +103,10 @@ public class IHM extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(" Diff clicked ");
-				stopcmd.executer(); 
+				stopcmd.executer();
 				seqcmd = new algoSequentielCMD(c);
 				seqcmd.executer();
-				//launch ... 
+				// launch ...
 				startcmd.executer();
 			}
 
@@ -119,10 +120,10 @@ public class IHM extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				System.out.println(" Epoque clicked ");
-				stopcmd.executer(); 
+				stopcmd.executer();
 				epoquecmd = new algoEpoqueCMD(c);
 				epoquecmd.executer();
-				//launch ... 
+				// launch ...
 				startcmd.executer();
 			}
 
@@ -191,12 +192,17 @@ public class IHM extends JFrame {
 		registerObservers((CapteurImpl) c);
 		startcmd = new StartCMD(c);
 		stopcmd = new StopCMD(c);
-		
-		//atomiquecmd = new algoAtomiqueCMD(c);
-		//atomiquecmd.executer();
-		
+
+		// atomiquecmd = new algoAtomiqueCMD(c);
+		// atomiquecmd.executer();
+
 	}
 
+	/**
+	 * registrer des observers
+	 * 
+	 * @param c
+	 */
 	private void registerObservers(CapteurImpl c) {
 		System.out.println("IHM: register " + liAfficheurs.size()
 				+ " observers");
@@ -205,10 +211,10 @@ public class IHM extends JFrame {
 		}
 	}
 
-	/*public static void main(String args[]) {
-		new IHM();
-	}
-*/
+	/*
+	 * public static void main(String args[]) { new IHM(); }
+	 */
+
 	public Afficheur getAfficheur(int index) {
 		assert (index >= 0 && index < liAfficheurs.size());
 		return (Afficheur) liAfficheurs.get(index);

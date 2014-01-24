@@ -1,5 +1,8 @@
 package command;
 
 public interface command {
-  public void executer();
+	/**
+	 * exectuer l'algo
+	 */
+	public void executer();
 }
