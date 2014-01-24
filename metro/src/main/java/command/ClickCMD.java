@@ -1,6 +1,6 @@
 package command;
 
-import mainPack.Capteur;
+import util.Capteur;
 
 public class ClickCMD implements command {
 

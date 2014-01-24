@@ -2,8 +2,9 @@ package callable;
 
 import java.util.concurrent.Callable;
 
-import mainPack.Afficheur;
-import mainPack.Canal;
+import util.Afficheur;
+import util.Canal;
+
 
 public class UpdateAfficheurCallable implements Callable{
 

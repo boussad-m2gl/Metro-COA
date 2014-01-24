@@ -2,7 +2,8 @@ package algorithmes;
 
 import java.util.ArrayList;
 
-import mainPack.Capteur;
+import util.Capteur;
+
 
 //TODO 
 public class DiffusionSeqAlgo implements AlgoDiffusion {

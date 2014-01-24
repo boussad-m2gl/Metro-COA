@@ -1,6 +1,6 @@
 package command;
 
-import mainPack.Capteur;
+import util.Capteur;
 import algorithmes.DiffusionSeqAlgo;
 
 public class algoSequentielCMD implements command {

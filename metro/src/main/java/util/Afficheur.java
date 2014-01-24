@@ -1,4 +1,4 @@
-package mainPack;
+package util;
 
 import javax.swing.JTextArea;
 
@@ -33,7 +33,13 @@ public class Afficheur implements ObserveurDeCanal {
 	// Epoq startegy method
 	public void update(EpoqMessage msgepoq){
 		
+//		System.out.println(" Diff atomique :  executerTick " + myEposqVersion);
+//		System.out.println(" Diff atomique :  executerTick " + msgepoq.get_versionNumber());
+//		System.out.println(" Diff atomique :  executerTick " + (myEposqVersion < msgepoq.get_versionNumber()));
+		
 		if(myEposqVersion < msgepoq.get_versionNumber()){
+			
+			
 			afficheur.setText(String.valueOf(msgepoq.get_value()));
 			myEposqVersion=msgepoq.get_versionNumber();
 		}  // receiving an old version : simply ignore it 

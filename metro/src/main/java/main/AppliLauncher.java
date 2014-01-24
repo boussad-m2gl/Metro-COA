@@ -1,4 +1,8 @@
-package mainPack;
+package main;
+
+import util.Capteur;
+import util.CapteurImpl;
+import util.IHM;
 
 public class AppliLauncher {
 

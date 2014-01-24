@@ -1,7 +1,7 @@
 package command;
 
+import util.Capteur;
 import algorithmes.DiffusionAtomiqAlgo;
-import mainPack.Capteur;
 
 
 public class algoAtomiqueCMD implements command {

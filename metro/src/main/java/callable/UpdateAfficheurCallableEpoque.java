@@ -2,16 +2,17 @@ package callable;
 
 import java.util.concurrent.Callable;
 
-import mainPack.Afficheur;
-import mainPack.Canal;
-import mainPack.EpoqMessage;
+import util.Afficheur;
+import util.Canal;
+import util.EpoqMessage;
 
-public class UpdateAfficheurCallableEpoqueStrat implements Callable{
+
+public class UpdateAfficheurCallableEpoque implements Callable{
 
 	private EpoqMessage _mssg;
 	private Afficheur _observer;
 	
-	public UpdateAfficheurCallableEpoqueStrat(EpoqMessage mssg, Afficheur aff){
+	public UpdateAfficheurCallableEpoque(EpoqMessage mssg, Afficheur aff){
 		
 		_mssg=mssg;
 		_observer=aff;

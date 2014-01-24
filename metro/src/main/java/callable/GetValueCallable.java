@@ -2,8 +2,9 @@ package callable;
 
 import java.util.concurrent.Callable;
 
+import util.Capteur;
 
-import mainPack.Capteur;
+
 
 public class GetValueCallable  implements Callable<Integer>{
 

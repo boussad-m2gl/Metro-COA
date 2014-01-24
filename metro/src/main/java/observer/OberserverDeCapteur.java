@@ -1,6 +1,6 @@
 package observer;
 
-import mainPack.Capteur;
+import util.Capteur;
 
 public interface OberserverDeCapteur extends Observer<Capteur> {  // Oberver<Capteur>
 

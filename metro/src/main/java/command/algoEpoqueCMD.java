@@ -1,7 +1,7 @@
 package command;
 
+import util.Capteur;
 import algorithmes.DiffusionEpoqAlgo;
-import mainPack.Capteur;
 
 
 public class algoEpoqueCMD implements command {

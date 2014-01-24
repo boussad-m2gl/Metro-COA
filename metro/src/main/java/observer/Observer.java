@@ -1,6 +1,6 @@
 package observer;
 
-import mainPack.EpoqMessage;
+import util.EpoqMessage;
 
 public interface Observer<T> {
 	

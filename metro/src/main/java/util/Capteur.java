@@ -1,4 +1,4 @@
-package mainPack;
+package util;
 
 import algorithmes.AlgoDiffusion;
 import observer.Subject;
@@ -16,7 +16,7 @@ public interface Capteur extends Subject {
 	public void setAlgoDiffusion(AlgoDiffusion algoDiffusion); 
 	public int algo2CapteurGetValue();
 	public int get_versionEpoq();
-
-	public void set_versionEpoq(int _versionEpoq);
+    public void set_versionEpoq(int _versionEpoq);
 	public void notifyObservers(EpoqMessage msg);
+
 }

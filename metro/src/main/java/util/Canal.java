@@ -1,4 +1,4 @@
-package mainPack;
+package util;
 
 import observer.OberserverDeCapteur;
 import observer.Observer;

@@ -1,6 +1,6 @@
 package algorithmes;
 
-import mainPack.Capteur;
+import util.Capteur;
 
 public interface AlgoDiffusion {
 

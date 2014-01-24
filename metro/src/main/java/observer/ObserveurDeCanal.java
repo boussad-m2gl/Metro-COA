@@ -1,6 +1,6 @@
 package observer;
 
-import mainPack.Canal;
+import util.Canal;
 
 public interface ObserveurDeCanal extends Observer<Canal> {
 
