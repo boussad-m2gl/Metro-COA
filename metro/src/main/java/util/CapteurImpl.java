@@ -22,7 +22,6 @@ public class CapteurImpl implements Capteur {
 	private ArrayList<OberserverDeCapteur> liObs;
 	private Horloge horloge;
 	private int capteurvalue = 0; // la valeur du capteur
-
 	private int _versionEpoq = 0;
 
 	public int get_versionEpoq() {
@@ -57,9 +56,7 @@ public class CapteurImpl implements Capteur {
 	}
 
 	public int getValue() {
-
 		return algoDiffusion.executeGetValue();
-
 	}
 
 	public int algo2CapteurGetValue() {

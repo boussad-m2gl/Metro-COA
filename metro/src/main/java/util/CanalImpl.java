@@ -4,10 +4,7 @@ import ihm.Afficheur;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-
-import observer.Observer;
 import observer.ObserveurDeCanal;
-import observer.Subject;
 import callable.GetValueCallable;
 import callable.MyExecutorService;
 import callable.UpdateAfficheurCallable;
@@ -21,13 +18,10 @@ public class CanalImpl implements Canal {
 
 	private Capteur _capteur;
 	private ObserveurDeCanal _afficheur;
-
 	private int Min = 1;
 	private int Max = 10;
 	private int innerDlay = Min + (int) (Math.random() * ((Max - Min) + 1));
 
-	
-	
 	/**
 	 * construteur
 	 * 
@@ -56,10 +50,6 @@ public class CanalImpl implements Canal {
 
 	public void update(Capteur subject) {
 
-		/*
-		 * System.out.println("update canal Impl called : create a callable." +
-		 * innerDlay);
-		 */
 		UpdateAfficheurCallable cUpdateAff = new UpdateAfficheurCallable(this,
 				(Afficheur) _afficheur);
 		MyExecutorService.submit(cUpdateAff, innerDlay * 100); // innerDlay *
@@ -77,32 +67,37 @@ public class CanalImpl implements Canal {
 																				// 100
 		try {
 			return f.get();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			e.printStackTrace();
-		}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
 		return 0;
 	}
 
 	public void attach(Object o) {
-		//this._afficheur = (Observer<Canal>) o;
-		
+		// this._afficheur = (Observer<Canal>) o;
+		_afficheur = (ObserveurDeCanal) o;
 	}
 
 	public void detach(Object o) {
-		
+
+		if (o instanceof ObserveurDeCanal) {
+			_afficheur = null;
+		}
+
 	}
 
-	// Normaly this will be used in the epoq diffusion strategy
+	/**
+	 * Method used to update Afficheur dans la strategie de diffusion par epoque
+	 */
 	public void update(EpoqMessage msg) {
 
 		UpdateAfficheurCallableEpoque callableEpoquSart = new UpdateAfficheurCallableEpoque(
 				msg, (Afficheur) _afficheur);
 		Future<Integer> f = MyExecutorService.submit(callableEpoquSart,
 				innerDlay * 100);
-
-		// _afficheur.update(msg); in case of synchro 
+		// _afficheur.update(msg); in case of synchro
 	}
 
 }
