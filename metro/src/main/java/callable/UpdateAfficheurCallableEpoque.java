@@ -1,13 +1,14 @@
 package callable;
 
+import ihm.Afficheur;
+
 import java.util.concurrent.Callable;
 
-import util.Afficheur;
 import util.EpoqMessage;
 
 /**
  * 
- * Callable pour mis a jour afficheur par l'algo epoque
+ * Callable pour mise a jour afficheur par l'algo epoque
  * 
  */
 public class UpdateAfficheurCallableEpoque implements Callable {

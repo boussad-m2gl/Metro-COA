@@ -13,7 +13,7 @@ public interface Subject {
 	 * @param o
 	 *            observer
 	 */
-	public void attach(Observer<Subject> o);
+	public void attach(Object o);
 
 	/**
 	 * detacher un observer
@@ -21,5 +21,5 @@ public interface Subject {
 	 * @param o
 	 *            observer
 	 */
-	public void detach(Observer<Subject> o);
+	public void detach(Object o);
 }

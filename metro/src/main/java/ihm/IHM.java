@@ -1,4 +1,5 @@
-package util;
+package ihm;
+
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -16,6 +17,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
+
+import util.Capteur;
+import util.CapteurImpl;
 
 import command.StartCMD;
 import command.StopCMD;
@@ -136,7 +140,7 @@ public class IHM extends JFrame {
 		getContentPane().add(algoPanel, BorderLayout.NORTH);
 
 		// Ajout des boutons start et stop :
-		startBut = new JButton("START");
+		/*startBut = new JButton("START");
 		startBut.setBackground(Color.GREEN);
 		stopBut = new JButton("STOP");
 		stopBut.setBackground(Color.ORANGE);
@@ -170,9 +174,10 @@ public class IHM extends JFrame {
 				stopcmd.executer();
 			}
 
-		});
+		});*/
 
-		this.setPreferredSize(new Dimension(800, 500));
+		this.setPreferredSize(new Dimension(800, 200));
+		this.setTitle("GHED-PU");
 		// this.setResizable(false);
 		this.pack();
 		this.setVisible(true);

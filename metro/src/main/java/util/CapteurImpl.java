@@ -1,5 +1,7 @@
 package util;
 
+import ihm.Afficheur;
+
 import java.util.ArrayList;
 
 import observer.OberserverDeCapteur;
@@ -86,23 +88,17 @@ public class CapteurImpl implements Capteur {
 		capteurvalue = v;
 	}
 
-	public void attach(Afficheur o) {
+	public void attach(Object o) {
 		System.out.println("capteurImp attach o");
 		CanalImpl can = new CanalImpl(this);
-		can.setAfficheur(o);
+		can.setAfficheur((Afficheur) o);
 		liObs.add(can); // creation d'un canal pour chaque afficheur
 
 	}
 
-	public void detach(Observer<Subject> o) {
-		// liObs.remove(o);
-		// parcours la liste de canneaux et enlever la canal qui contient
-		// l'afficheur o
-	}
-
-	public void attach(Observer<Subject> o) {
-		// TODO Auto-generated method stub
-		System.out.println("capteurImp attach o");
+	public void detach(Object o) {
+		 liObs.remove((OberserverDeCapteur)o);
+		
 	}
 
 	public void start() {

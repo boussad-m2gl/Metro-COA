@@ -1,13 +1,14 @@
 package callable;
 
+import ihm.Afficheur;
+
 import java.util.concurrent.Callable;
 
-import util.Afficheur;
 import util.Canal;
 
 /**
  * 
- * Callable pour mis a jour afficheur
+ * Callable pour mise a jour de l'afficheur
  * 
  */
 public class UpdateAfficheurCallable implements Callable {
@@ -31,7 +32,8 @@ public class UpdateAfficheurCallable implements Callable {
 
 	public Object call() throws Exception {
 		observer.update(subject);
-		return null;
+		return null;  //  Operation de update pas besoin d'une
+		              //  d'une valeur de retour 
 	}
 
 }

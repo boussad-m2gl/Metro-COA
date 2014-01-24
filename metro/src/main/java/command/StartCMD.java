@@ -6,7 +6,7 @@ import util.Capteur;
  * 
  * Command de Start
  * 
- * demarrer le fonctionement du capteur
+ * demarrer le fonctionnement du capteur
  * 
  */
 public class StartCMD implements command {

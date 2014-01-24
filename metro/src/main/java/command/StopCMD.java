@@ -6,7 +6,7 @@ import util.Capteur;
  * 
  * Command de Stop
  * 
- * Arreter le fonctionement du capteur
+ * Arreter le fonctionnement du capteur
  * 
  */
 public class StopCMD implements command {

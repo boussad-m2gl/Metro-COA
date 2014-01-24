@@ -1,5 +1,7 @@
 package util;
 
+import ihm.Afficheur;
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -24,6 +26,8 @@ public class CanalImpl implements Canal {
 	private int Max = 10;
 	private int innerDlay = Min + (int) (Math.random() * ((Max - Min) + 1));
 
+	
+	
 	/**
 	 * construteur
 	 * 
@@ -81,10 +85,13 @@ public class CanalImpl implements Canal {
 		return 0;
 	}
 
-	public void attach(Observer<Subject> o) {
+	public void attach(Object o) {
+		//this._afficheur = (Observer<Canal>) o;
+		
 	}
 
-	public void detach(Observer<Subject> o) {
+	public void detach(Object o) {
+		
 	}
 
 	// Normaly this will be used in the epoq diffusion strategy
@@ -95,7 +102,7 @@ public class CanalImpl implements Canal {
 		Future<Integer> f = MyExecutorService.submit(callableEpoquSart,
 				innerDlay * 100);
 
-		// _afficheur.update(msg);
+		// _afficheur.update(msg); in case of synchro 
 	}
 
 }

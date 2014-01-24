@@ -1,8 +1,11 @@
-package util;
+package ihm;
 
 import javax.swing.JTextArea;
 
 import observer.ObserveurDeCanal;
+import util.Canal;
+import util.CanalImpl;
+import util.EpoqMessage;
 
 /**
  * 
