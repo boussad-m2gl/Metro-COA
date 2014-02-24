@@ -9,7 +9,9 @@ import util.EpoqMessage;
 
 /**
  * 
- * Afficheur
+ * Afficheur : 
+ * 
+ *   Joue la role de l'Observateur du Canale 
  * 
  */
 public class Afficheur implements ObserveurDeCanal {
@@ -47,21 +49,31 @@ public class Afficheur implements ObserveurDeCanal {
 		return afficheur;
 	}
 
+	/**
+	 * @param subject : Mise a jour de l'afficheur
+	 *                 via le sujet
+	 */
 	public void update(Canal subject) {
 		int val = ((CanalImpl) subject).getValue();
 		afficheur.setText(String.valueOf(val));
-		// code seccur
+		// Faire face au changement de strategie
 		myEposqVersion = -1;
 	}
 
-	// Epoq startegy method
+	/**
+	 *  @param msgepoq : Mettre a jour l'afficheur  par 
+	 *                  un message (strategie de gestion par époque)
+	 */
 	public void update(EpoqMessage msgepoq) {
 
 		if (myEposqVersion < msgepoq.get_versionNumber()) {
 
 			afficheur.setText(String.valueOf(msgepoq.get_value()));
 			myEposqVersion = msgepoq.get_versionNumber();
-		} // receiving an old version : simply ignore it
+		
+		}else{
+			  // receiving an old version : simply ignore it
+		} 
 	}
 
 }

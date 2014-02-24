@@ -1,12 +1,14 @@
 package util;
 
 /**
- * A Message to be sent to the observers
+ *     A Message  de la strategie de gestion par époque
+ *     Ce message sera envoyé par capteur vers le observateurs
+ *     a Chaque fois que ca valeur change
  * */
 public class EpoqMessage {
 
-	private int _value; // The data of this message
-	private int _versionNumber; // a counter to simulate the epoq strategy
+	private int _value; // le contenu du message
+	private int _versionNumber; // la version du message
 
 	public int get_value() {
 		return _value;

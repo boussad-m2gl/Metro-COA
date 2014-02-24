@@ -5,7 +5,8 @@ import algorithmes.DiffusionAtomiqAlgo;
 
 /**
  * 
- * L'algo de diffusion atomique
+ * Commande
+ *     L'algo de diffusion atomique
  * 
  */
 public class algoAtomiqueCMD implements command {

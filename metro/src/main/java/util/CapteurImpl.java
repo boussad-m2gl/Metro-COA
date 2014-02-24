@@ -3,17 +3,13 @@ package util;
 import ihm.Afficheur;
 
 import java.util.ArrayList;
-
 import observer.OberserverDeCapteur;
-import observer.Observer;
-import observer.Subject;
 import algorithmes.AlgoDiffusion;
-
 import command.ClickCMD;
 
 /**
  * 
- * implement de capteur
+ * Le capteur
  * 
  */
 public class CapteurImpl implements Capteur {
@@ -92,18 +88,32 @@ public class CapteurImpl implements Capteur {
 		liObs.add(can); // creation d'un canal pour chaque afficheur
 
 	}
-
+	
 	public void detach(Object o) {
 		 liObs.remove((OberserverDeCapteur)o);
 		
 	}
-
+    
+	/**
+	 * démmarer le capteur
+	 */
 	public void start() {
 		horloge.startChrono();
 	}
-
+    /**
+     * arreter le capteur 
+     */
 	public void stop() {
 		horloge.stopChrono();
 	}
-
+    
+	/**
+	 * Injecter  l'horloge  : seulement pour le teste
+	 * 
+	 * @param horloge: Horloge a injecter 
+	 */
+	public void   setHologe(Horloge horloge){
+		this.horloge = horloge;
+	}
+	
 }

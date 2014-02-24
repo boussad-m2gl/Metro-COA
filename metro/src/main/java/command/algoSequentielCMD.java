@@ -4,8 +4,9 @@ import util.Capteur;
 import algorithmes.DiffusionSeqAlgo;
 
 /**
+ * Commande
  * 
- * L'algo de diffusion sequentielle
+ *  de L'algo de diffusion sequentielle
  * 
  */
 public class algoSequentielCMD implements command {

@@ -2,7 +2,6 @@ package ihm;
 
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -27,12 +26,19 @@ import command.algoAtomiqueCMD;
 import command.algoEpoqueCMD;
 import command.algoSequentielCMD;
 
+/**
+ *   L'IHM  de l'Application 
+ *
+ */
 public class IHM extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	public static final int NB_AFFICHEUR = 3;
-
 	private Capteur c;
-
 	ArrayList<JLabel> liLabels;
 	ArrayList<Afficheur> liAfficheurs; // Les afficheurs qui observent le
 										// capteur
@@ -40,12 +46,12 @@ public class IHM extends JFrame {
 	JButton startBut;
 	JButton stopBut;
 
-	// List of commandes
+	// Liste Des Commandes
 	StartCMD startcmd;
 	StopCMD stopcmd;
-	algoAtomiqueCMD atomiquecmd = null;
-	algoSequentielCMD seqcmd = null;
-	algoEpoqueCMD epoquecmd = null;
+	algoAtomiqueCMD atomiquecmd;
+	algoSequentielCMD seqcmd;
+	algoEpoqueCMD epoquecmd;
 
 	/**
 	 * construteur
@@ -64,7 +70,7 @@ public class IHM extends JFrame {
 			JLabel labaff = new JLabel(" Afficheur  " + (i + 1) + " : ");
 			liLabels.add(labaff);
 		}
-
+        // création de afficheurs
 		liAfficheurs = new ArrayList<Afficheur>();
 		for (int i = 0; i < NB_AFFICHEUR; i++) {
 			JTextArea labaff = new JTextArea(2, 2);
@@ -72,7 +78,6 @@ public class IHM extends JFrame {
 		}
 
 		for (int i = 0; i < NB_AFFICHEUR; i++) {
-
 			panAff.add(liLabels.get(i));
 			panAff.add(((Afficheur) liAfficheurs.get(i)).getComponent());
 		}
@@ -84,14 +89,11 @@ public class IHM extends JFrame {
 		JPanel algoPanel = new JPanel();
 		algoPanel.setBorder(BorderFactory.createTitledBorder("Algo"));
 
+		// DIFF  Atomique
 		JRadioButton jrdbAtomiqueDiff = new JRadioButton("Atomique diffusion");
 		algoPanel.add(jrdbAtomiqueDiff);
-		// jrdbAtomiqueDiff.setSelected(true);
-
 		jrdbAtomiqueDiff.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(" Atomic clicked ");
 				stopcmd.executer();
 				atomiquecmd = new algoAtomiqueCMD(c);
 				atomiquecmd.executer();
@@ -99,35 +101,30 @@ public class IHM extends JFrame {
 			}
 
 		});
-
+		
+         //DIFF Sequentielle
 		JRadioButton jrdbSeqDiff = new JRadioButton("Sequentielle diffusion");
 		algoPanel.add(jrdbSeqDiff);
-
 		jrdbSeqDiff.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(" Diff clicked ");
 				stopcmd.executer();
 				seqcmd = new algoSequentielCMD(c);
 				seqcmd.executer();
-				// launch ...
 				startcmd.executer();
 			}
 
 		});
-
+		
+        // DIFF Epoque
 		JRadioButton jrdbEpoqDiff = new JRadioButton("Epoque diffusion");
 		algoPanel.add(jrdbEpoqDiff);
-
 		jrdbEpoqDiff.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-
-				System.out.println(" Epoque clicked ");
 				stopcmd.executer();
 				epoquecmd = new algoEpoqueCMD(c);
 				epoquecmd.executer();
-				// launch ...
 				startcmd.executer();
 			}
 
@@ -138,73 +135,36 @@ public class IHM extends JFrame {
 		bgAlgoGroup.add(jrdbSeqDiff);
 
 		getContentPane().add(algoPanel, BorderLayout.NORTH);
-
-		// Ajout des boutons start et stop :
-		/*startBut = new JButton("START");
-		startBut.setBackground(Color.GREEN);
-		stopBut = new JButton("STOP");
-		stopBut.setBackground(Color.ORANGE);
-		JPanel jPanBut = new JPanel();
-		jPanBut.setLayout(new BorderLayout());
-		jPanBut.add(startBut, BorderLayout.WEST);
-		jPanBut.add(stopBut, BorderLayout.EAST);
-		getContentPane().add(jPanBut, BorderLayout.SOUTH);
-		// association des command
-
-		startBut.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("start command order");
-				if (atomiquecmd == null && seqcmd == null && epoquecmd == null) {
-					// JOptionPane.showInternalMessageDialog(getParentFrame(),
-					// "choose a strategy !", "", 0, null);
-				} else {
-					System.out.println("strategies not null");
-					startcmd.executer();
-				}
-
-			}
-
-		});
-
-		stopBut.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("stop command order");
-				stopcmd.executer();
-			}
-
-		});*/
-
 		this.setPreferredSize(new Dimension(800, 200));
 		this.setTitle("GHED-PU");
-		// this.setResizable(false);
 		this.pack();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 	}
 
 	public JFrame getParentFrame() {
 		return this;
 	}
-
+	
+    /**
+     * Configurer les capteur dans l'ihm
+     * 
+     * @param c : Capteur
+     */
 	public void setCapteur(Capteur c) {
 
 		System.out.println("IHM : set capteur called");
 		this.c = c;
 		// register auprés du capteur
-
 		registerObservers((CapteurImpl) c);
 		startcmd = new StartCMD(c);
 		stopcmd = new StopCMD(c);
-
-		// atomiquecmd = new algoAtomiqueCMD(c);
-		// atomiquecmd.executer();
-
+		
 	}
 
 	/**
-	 * registrer des observers
+	 * enregistrer les observervateurs 
 	 * 
 	 * @param c
 	 */
@@ -215,11 +175,11 @@ public class IHM extends JFrame {
 			c.attach((Afficheur) liAfficheurs.get(i));
 		}
 	}
-
-	/*
-	 * public static void main(String args[]) { new IHM(); }
-	 */
-
+     /**
+      * Obtenir un afficheur 
+      * @param index  : index de l'afficheur
+      * @return
+      */
 	public Afficheur getAfficheur(int index) {
 		assert (index >= 0 && index < liAfficheurs.size());
 		return (Afficheur) liAfficheurs.get(index);

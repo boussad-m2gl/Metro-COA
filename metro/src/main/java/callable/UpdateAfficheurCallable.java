@@ -8,9 +8,10 @@ import util.Canal;
 
 /**
  * 
- * Callable pour mise a jour de l'afficheur
+ * Callable pour la mise a jour de l'afficheur
  * 
  */
+@SuppressWarnings("rawtypes")
 public class UpdateAfficheurCallable implements Callable {
 
 	private Canal subject;

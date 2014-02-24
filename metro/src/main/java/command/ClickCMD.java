@@ -4,7 +4,9 @@ import util.Capteur;
 
 /**
  * 
- * Command de Click
+ * Command de Click 
+ * 
+ * Utilisée par l'Horloge pour agir sur le capteur
  * 
  */
 public class ClickCMD implements command {

@@ -6,8 +6,8 @@ import java.util.TimerTask;
 import command.command;
 
 /**
- * Horloge : qui est le composant qui genere des signaux On programme des taches
- * qui seront exécutés
+ * Horloge :  - Le composant qui genère des signaux 
+ *            - On programme des taches qui seront exécutées aprés un delay
  * 
  * */
 public class Horloge {
@@ -16,7 +16,6 @@ public class Horloge {
 	private Timer timer; // timer pour la commande marquer temps
 	private long periodActiveCmd = 200; // ms
 
-	// private Timer timer2 = new Timer(); // timer pour commander led1 et led2
 
 	/**
 	 * contructeur

@@ -5,9 +5,7 @@ import observer.ObserveurDeCanal;
 import observer.Subject;
 
 /**
- * 
- * Canal
- * 
+ *  Canal 
  */
 public interface Canal extends Subject, OberserverDeCapteur {
 

@@ -11,6 +11,7 @@ import util.EpoqMessage;
  * Callable pour mise a jour afficheur par l'algo epoque
  * 
  */
+@SuppressWarnings("rawtypes")
 public class UpdateAfficheurCallableEpoque implements Callable {
 
 	private EpoqMessage _mssg;

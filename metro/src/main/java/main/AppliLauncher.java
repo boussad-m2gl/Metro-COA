@@ -8,7 +8,7 @@ import util.CapteurImpl;
  * 
  * Enter point of program
  * 
- * @author Boussad , PU
+ * @author Boussad G., ChengCheng P.
  *
  */
 public class AppliLauncher {
